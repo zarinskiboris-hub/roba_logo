@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROBA - Build. Train. Deploy.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'roba-pink': '#ff6b9d',
+                        'roba-purple': '#8b5cf6',
+                        'roba-dark': '#0f0f0f',
+                        'roba-gray': '#1a1a1a'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-white font-mono">
+    <!-- Navigation -->
+    <nav class="flex items-center justify-between p-6 border-b border-gray-800">
+        <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 bg-gradient-to-br from-roba-pink to-roba-purple rounded-lg flex items-center justify-center">
+                <div class="w-4 h-4 bg-white rounded-sm transform rotate-45"></div>
+            </div>
+            <span class="text-xl font-bold">roba</span>
+        </div>
+        <div class="flex space-x-4">
+            <button onclick="showLogin()" class="px-4 py-2 border border-gray-600 rounded-lg hover:border-roba-pink transition-colors">
+                Login
+            </button>
+            <button onclick="showSignup()" class="px-4 py-2 bg-gradient-to-r from-roba-pink to-roba-purple rounded-lg hover:opacity-90 transition-opacity">
+                Sign Up
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="container mx-auto px-6 py-20">
+        <div class="text-center max-w-4xl mx-auto">
+            <h1 class="text-6xl font-bold mb-6">
+                <span class="bg-gradient-to-r from-roba-pink via-roba-purple to-roba-pink bg-clip-text text-transparent">
+                    BUILD.
+                </span>
+                <br>
+                <span class="bg-gradient-to-r from-orange-400 to-roba-pink bg-clip-text text-transparent">
+                    TRAIN
+                </span>
+                <br>
+                <span class="bg-gradient-to-r from-roba-purple to-blue-400 bg-clip-text text-transparent">
+                    DEPLOY
+                </span>
+            </h1>
+            <p class="text-xl text-gray-400 mb-12 leading-relaxed">
+                Connect your repositories, complete tasks, and earn ROBA tokens while building the future of decentralized development.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="showSignup()" class="px-8 py-4 bg-gradient-to-r from-roba-pink to-roba-purple rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity">
+                    Get Started
+                </button>
+                <button class="px-8 py-4 border border-gray-600 rounded-lg text-lg hover:border-roba-pink transition-colors">
+                    Learn More
+                </button>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mt-20">
+            <div class="bg-roba-gray p-6 rounded-xl border border-gray-800">
+                <div class="w-12 h-12 bg-gradient-to-br from-roba-pink to-roba-purple rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Task Management</h3>
+                <p class="text-gray-400">Import repositories and manage development tasks with AI-powered assistance.</p>
+            </div>
+            <div class="bg-roba-gray p-6 rounded-xl border border-gray-800">
+                <div class="w-12 h-12 bg-gradient-to-br from-orange-400 to-roba-pink rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">GitHub Integration</h3>
+                <p class="text-gray-400">Seamlessly connect your GitHub repositories and sync your development workflow.</p>
+            </div>
+            <div class="bg-roba-gray p-6 rounded-xl border border-gray-800">
+                <div class="w-12 h-12 bg-gradient-to-br from-roba-purple to-blue-400 rounded-lg mb-4 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"></path>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Earn ROBA Tokens</h3>
+                <p class="text-gray-400">Complete tasks and contribute to projects to earn ROBA tokens and build your reputation.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-roba-gray p-8 rounded-xl w-full max-w-md mx-4 border border-gray-800">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Login</h2>
+                <button onclick="hideModals()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-2 border border-gray-700 rounded-lg focus:border-roba-pink focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" class="w-full px-4 py-2 border border-gray-700 rounded-lg focus:border-roba-pink focus:outline-none">
+                </div>
+                <button type="submit" onclick="login()" class="w-full py-3 bg-gradient-to-r from-roba-pink to-roba-purple rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    Login
+                </button>
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-roba-gray text-gray-400">Or continue with</span>
+                    </div>
+                </div>
+                <button type="button" onclick="githubLogin()" class="w-full py-3 border border-gray-700 rounded-lg hover:border-roba-pink transition-colors flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Continue with GitHub</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Signup Modal -->
+    <div id="signupModal" class="fixed inset-0 bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-roba-gray p-8 rounded-xl w-full max-w-md mx-4 border border-gray-800">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Sign Up</h2>
+                <button onclick="hideModals()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <form class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-2">Username</label>
+                    <input type="text" class="w-full px-4 py-2 border border-gray-700 rounded-lg focus:border-roba-pink focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Email</label>
+                    <input type="email" class="w-full px-4 py-2 border border-gray-700 rounded-lg focus:border-roba-pink focus:outline-none">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-2">Password</label>
+                    <input type="password" class="w-full px-4 py-2 border border-gray-700 rounded-lg focus:border-roba-pink focus:outline-none">
+                </div>
+                <button type="submit" onclick="signup()" class="w-full py-3 bg-gradient-to-r from-roba-pink to-roba-purple rounded-lg font-semibold hover:opacity-90 transition-opacity">
+                    Create Account
+                </button>
+                <div class="relative my-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-700"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-roba-gray text-gray-400">Or continue with</span>
+                    </div>
+                </div>
+                <button type="button" onclick="githubSignup()" class="w-full py-3 border border-gray-700 rounded-lg hover:border-roba-pink transition-colors flex items-center justify-center space-x-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clip-rule="evenodd"></path>
+                    </svg>
+                    <span>Continue with GitHub</span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.getElementById('loginModal').classList.remove('hidden');
+        }
+
+        function showSignup() {
+            document.getElementById('signupModal').classList.remove('hidden');
+        }
+
+        function hideModals() {
+            document.getElementById('loginModal').classList.add('hidden');
+            document.getElementById('signupModal').classList.add('hidden');
+        }
+
+        function login() {
+            event.preventDefault();
+            // Simulate login success
+            localStorage.setItem('robaUser', JSON.stringify({
+                username: 'developer',
+                email: 'dev@example.com',
+                githubConnected: false
+            }));
+            window.location.href = 'tasks.html';
+        }
+
+        function signup() {
+            event.preventDefault();
+            // Simulate signup success
+            localStorage.setItem('robaUser', JSON.stringify({
+                username: 'newdeveloper',
+                email: 'newdev@example.com',
+                githubConnected: false
+            }));
+            window.location.href = 'tasks.html';
+        }
+
+        function githubLogin() {
+            // Simulate GitHub OAuth
+            localStorage.setItem('robaUser', JSON.stringify({
+                username: 'githubuser',
+                email: 'github@example.com',
+                githubConnected: true,
+                avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=github'
+            }));
+            window.location.href = 'tasks.html';
+        }
+
+        function githubSignup() {
+            githubLogin(); // Same flow for demo
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const loginModal = document.getElementById('loginModal');
+            const signupModal = document.getElementById('signupModal');
+            if (event.target === loginModal) {
+                hideModals();
+            }
+            if (event.target === signupModal) {
+                hideModals();
+            }
+        }
+    </script>
+</body>
+</html>
